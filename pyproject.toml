@@ -9,7 +9,7 @@ description = "MCP servers for ESG report processing: metric extraction, vector 
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.11"
-authors = [{ name = "ESG Platform Team" }]
+authors = [{ name = "Ioannis Michos", email = "johnmichos.tf@gmail.com" }]
 keywords = ["mcp", "esg", "sustainability", "csrd", "esrs", "pgvector", "rag"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -31,8 +31,7 @@ dependencies = [
     "psycopg2-binary>=2.9.10",
     "pgvector>=0.3.6",
     # MongoDB (GridFS)
-    "pymongo>=4.9.2",
-    "gridfs",
+    "pymongo[srv]>=4.9.2",
     # Config
     "pydantic-settings>=2.6.0",
     "python-dotenv>=1.0.0",

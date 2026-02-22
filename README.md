@@ -4,6 +4,8 @@ Open-source [Model Context Protocol](https://modelcontextprotocol.io/) servers f
 
 **31 tools** across 6 servers — install once, run only what you need.
 
+**Author:** Ioannis Michos ([johnmichos.tf@gmail.com](mailto:johnmichos.tf@gmail.com))
+
 ## Quick Start
 
 ```bash
@@ -78,7 +80,7 @@ PDF validation, text/table extraction, and embedding generation.
 | `extract_text_chunks` | Extract and chunk PDF text |
 | `extract_tables` | Table extraction with OCR fallback |
 | `generate_embeddings` | Batch embedding generation |
-| `process_pdf_full_pipeline` | End-to-end: extract → embed → store |
+| `process_pdf_full_pipeline` | End-to-end: extract, embed, store |
 
 ### esg-vector-store (5 tools)
 
@@ -169,9 +171,9 @@ pip install esg-mcp-servers[scraper]
 ## Development
 
 ```bash
-git clone https://github.com/your-org/esg-mcp-servers.git
+git clone https://github.com/IoannisM/esg-mcp-servers.git
 cd esg-mcp-servers
-pip install -e ".[scraper]"
+pip install -e ".[scraper,dev]"
 docker compose up -d
 esg-mcp-migrate
 ```
