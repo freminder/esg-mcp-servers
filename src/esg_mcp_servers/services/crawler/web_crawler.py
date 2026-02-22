@@ -1467,45 +1467,11 @@ def run_from_excel(excel_path: str, sheet_name: str = 'data', url_column: str = 
 # Example usage for testing
 # ---------------------------------------------------------------------------
 if __name__ == "__main__":
-    # Set up logging to console
-    console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    console.setFormatter(formatter)
-    logger.addHandler(console)
+    import sys
 
-    # Example: Search and download ESG reports for a company
-    # search_and_download_esg_reports("Novartis")
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(name)s %(levelname)s %(message)s")
 
-    # Example: Crawl a specific website
-    # run_from_url("https://www.novartis.com/investors/financial-data/annual-reports")
-
-    # Test WebCrawler directly
-    test_crawler = WebCrawler("https://www.ubs.com", depth_limit=1, max_pages=10)
-    pdf_links = test_crawler.start()
-    print(f"Found {len(pdf_links)} PDF links")
-
-    # After finding PDF links
-    if pdf_links:
-        print(f"Found {len(pdf_links)} PDF links")
-
-        # Create download folder
-        download_folder = "downloads/ubs"
-        os.makedirs(download_folder, exist_ok=True)
-
-        # Filter for ESG reports (optional)
-        esg_pdf_links = filter_esg_reports(pdf_links, "ubs")
-        print(f"Filtered to {len(esg_pdf_links)} ESG-related PDF links")
-
-        # Download the PDFs
-        downloaded_files = []
-        for link in esg_pdf_links:
-            try:
-                file_path = download_pdf(link['url'], download_folder, "UBS")
-                if file_path:
-                    downloaded_files.append(file_path)
-                    print(f"Downloaded: {os.path.basename(file_path)}")
-            except Exception as e:
-                print(f"Error downloading {link['url']}: {str(e)}")
-
-        print(f"Downloaded {len(downloaded_files)} files to {os.path.abspath(download_folder)}")
+    url = sys.argv[1] if len(sys.argv) > 1 else "https://example.com"
+    crawler = WebCrawler(url, depth_limit=1, max_pages=10)
+    found = crawler.start()
+    print(f"Found {len(found)} PDF links")
