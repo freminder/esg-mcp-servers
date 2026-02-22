@@ -1,5 +1,7 @@
 # ESG MCP Servers
 
+<!-- mcp-name: io.github.freminder/esg-mcp-servers -->
+
 Open-source [Model Context Protocol](https://modelcontextprotocol.io/) servers for ESG (Environmental, Social, and Governance) data extraction, analysis, and regulation management.
 
 **31 tools** across 6 servers — install once, run only what you need.
@@ -171,7 +173,7 @@ pip install esg-mcp-servers[scraper]
 ## Development
 
 ```bash
-git clone https://github.com/IoannisM/esg-mcp-servers.git
+git clone https://github.com/freminder/esg-mcp-servers.git
 cd esg-mcp-servers
 pip install -e ".[scraper,dev]"
 docker compose up -d
