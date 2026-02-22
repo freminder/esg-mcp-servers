@@ -27,6 +27,12 @@ model_artifacts/
 # Downloads
 downloads/
 
+# MCP publisher
+mcp-publisher*
+.mcpregistry_*
+registry_*
+server.json
+
 # OS
 .DS_Store
 Thumbs.db
