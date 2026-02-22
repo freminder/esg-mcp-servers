@@ -1,0 +1,81 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "esg-mcp-servers"
+version = "0.1.0"
+description = "MCP servers for ESG report processing: metric extraction, vector search, PDF ingestion, regulation analysis, and web scraping"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [{ name = "ESG Platform Team" }]
+keywords = ["mcp", "esg", "sustainability", "csrd", "esrs", "pgvector", "rag"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+
+dependencies = [
+    # MCP
+    "mcp>=1.0.0",
+    # LLM
+    "anthropic>=0.40.0",
+    # Embeddings
+    "sentence-transformers>=3.3.0",
+    "torch>=2.5.0",
+    # Vector DB
+    "psycopg2-binary>=2.9.10",
+    "pgvector>=0.3.6",
+    # MongoDB (GridFS)
+    "pymongo>=4.9.2",
+    "gridfs",
+    # Config
+    "pydantic-settings>=2.6.0",
+    "python-dotenv>=1.0.0",
+    # PDF
+    "pymupdf>=1.25.0",
+    "pdfplumber>=0.11.0",
+    "pdfminer.six>=20231228",
+    "pdf2image>=1.17.0",
+    "pillow>=11.0.0",
+    "pytesseract>=0.3.13",
+    "opencv-python-headless>=4.10.0",
+    # ML (PDF verifier)
+    "scikit-learn>=1.5.0",
+    "numpy>=2.0.0",
+    "joblib>=1.4.0",
+    # HTTP
+    "requests>=2.32.0",
+]
+
+[project.optional-dependencies]
+scraper = [
+    "selenium>=4.27.0",
+    "webdriver-manager>=4.0.2",
+    "beautifulsoup4>=4.12.0",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.8",
+]
+
+[project.scripts]
+esg-metrics-extractor = "esg_mcp_servers.servers.metrics_extractor:main"
+esg-pdf-processor     = "esg_mcp_servers.servers.pdf_processor:main"
+esg-vector-store      = "esg_mcp_servers.servers.vector_store:main"
+esg-regulations       = "esg_mcp_servers.servers.regulations:main"
+esg-scraper           = "esg_mcp_servers.servers.scraper:main"
+esg-mcp-all           = "esg_mcp_servers.servers.combined:main"
+esg-mcp-migrate       = "esg_mcp_servers.core.postgres:run_migrations"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/esg_mcp_servers"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
