@@ -1,43 +1,61 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.freminder/esg-mcp-servers",
-  "description": "ESG metric extraction, PDF processing, vector search, and regulation analysis",
+  "title": "ESG MCP Servers",
+  "description": "Open-source MCP servers for ESG (Environmental, Social, Governance) data: 31 tools across 6 servers for ESRS-aligned metric extraction (E1–G1), PDF processing, vector search, EU regulation analysis, and web scraping.",
   "repository": {
     "url": "https://github.com/freminder/esg-mcp-servers",
     "source": "github"
   },
-  "version": "0.1.1",
+  "homepage": "https://github.com/freminder/esg-mcp-servers#readme",
+  "license": "MIT",
+  "version": "0.1.0",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "esg-mcp-servers",
-      "version": "0.1.1",
+      "version": "0.1.0",
       "transport": {
         "type": "stdio"
       },
       "environmentVariables": [
         {
-          "description": "Anthropic API key for RAG queries and LLM-based metric extraction",
+          "name": "ANTHROPIC_API_KEY",
+          "description": "Anthropic API key — required for RAG queries and LLM-based metric extraction",
           "isRequired": true,
-          "format": "string",
           "isSecret": true,
-          "name": "ANTHROPIC_API_KEY"
+          "format": "string"
         },
         {
-          "description": "PostgreSQL connection string with pgvector extension",
+          "name": "POSTGRES_DSN",
+          "description": "PostgreSQL connection string with pgvector extension (e.g. postgresql://esg:esg@localhost/esg_platform)",
           "isRequired": true,
-          "format": "string",
-          "isSecret": true,
-          "name": "POSTGRES_DSN"
+          "isSecret": false,
+          "format": "string"
         },
         {
-          "description": "MongoDB connection string for GridFS PDF storage",
+          "name": "MONGODB_URI",
+          "description": "MongoDB connection string for PDF binary storage via GridFS (e.g. mongodb://localhost:27017)",
           "isRequired": true,
-          "format": "string",
-          "isSecret": true,
-          "name": "MONGODB_URI"
+          "isSecret": false,
+          "format": "string"
+        },
+        {
+          "name": "EMBEDDING_MODEL",
+          "description": "Sentence-transformer model name for embedding generation (default: Snowflake/snowflake-arctic-embed-l-v2.0)",
+          "isRequired": false,
+          "isSecret": false,
+          "format": "string"
+        },
+        {
+          "name": "EMBEDDING_DIMENSIONS",
+          "description": "Embedding vector dimension size (default: 1024)",
+          "isRequired": false,
+          "isSecret": false,
+          "format": "string"
         }
       ]
     }
-  ]
+  ],
+  "remotes": []
 }
