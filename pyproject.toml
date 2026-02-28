@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "esg-mcp-servers"
-version = "0.1.1"
+version = "0.1.2"
 description = "MCP servers for ESG report processing: metric extraction, vector search, PDF ingestion, regulation analysis, and web scraping"
 readme = "README.md"
 license = "MIT"

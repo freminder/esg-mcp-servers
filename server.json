@@ -2,19 +2,19 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.freminder/esg-mcp-servers",
   "title": "ESG MCP Servers",
-  "description": "Open-source MCP servers for ESG (Environmental, Social, Governance) data: 31 tools across 6 servers for ESRS-aligned metric extraction (E1–G1), PDF processing, vector search, EU regulation analysis, and web scraping.",
+  "description": "31 MCP tools for ESG data extraction, PDF processing, vector search, and EU regulation analysis.",
   "repository": {
     "url": "https://github.com/freminder/esg-mcp-servers",
     "source": "github"
   },
   "homepage": "https://github.com/freminder/esg-mcp-servers#readme",
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "esg-mcp-servers",
-      "version": "0.1.0",
+      "version": "0.1.2",
       "transport": {
         "type": "stdio"
       },
